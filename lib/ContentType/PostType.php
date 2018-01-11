@@ -62,6 +62,16 @@ abstract class PostType implements Registerable {
 	}
 
 	/**
+	 * Return the list of taxonomies associated with post type.
+	 *
+	 * @since  0.0.1
+	 * @return array List of taxonomies
+	 */
+	public function get_taxonomies() : array {
+		return $this->taxonomies;
+	}
+
+	/**
 	 * Register custom post type.
 	 *
 	 * @since 0.0.1

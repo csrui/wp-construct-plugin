@@ -15,9 +15,10 @@
   </rule>
 
   <!-- Ignore lowercase filenames -->
-  <rule ref="Generic.Files.LowercasedFilename.NotFound">
+  <rule ref="WordPress.Files.FileName.NotHyphenatedLowercase">
     <severity>0</severity>
   </rule>
 
   <rule ref="WordPress-Extra" />
+
 </ruleset>

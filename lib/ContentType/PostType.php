@@ -44,6 +44,14 @@ abstract class PostType implements Registerable {
 		$this->taxonomies = $taxonomies;
 	}
 
+	/**
+	 * Returns the post type slug
+	 *
+	 * If none was provided at first, it is infered from class name
+	 *
+	 * @since  0.0.1
+	 * @return string string
+	 */
 	final public function get_slug() : string {
 
 		if ( empty( $this->slug ) ) {

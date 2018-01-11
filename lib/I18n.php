@@ -19,16 +19,26 @@ class I18n implements Registerable {
 	/**
 	 * The domain specified for this plugin.
 	 *
-	 * @since    0.0.1
-	 * @access   private
-	 * @var      string    $domain    The domain identifier for this plugin.
+	 * @since  0.0.1
+	 * @access private
+	 * @var    string $domain The domain identifier for this plugin.
 	 */
 	private $domain;
 
 	/**
+	 * Set the domain equal to that of the specified domain.
+	 *
+	 * @since 0.0.1
+	 * @param string $domain The domain that represents the locale of this plugin.
+	 */
+	public function __construct( string $domain ) {
+		$this->domain = $domain;
+	}
+
+	/**
 	 * Load the plugin text domain for translation.
 	 *
-	 * @since    0.0.1
+	 * @since 0.0.1
 	 */
 	public function register() {
 
@@ -41,12 +51,12 @@ class I18n implements Registerable {
 	}
 
 	/**
-	 * Set the domain equal to that of the specified domain.
+	 * Return the domain name
 	 *
-	 * @since    0.0.1
-	 * @param    string    $domain    The domain that represents the locale of this plugin.
+	 * @since  0.0.1
+	 * @return string Domain name
 	 */
-	public function set_domain( $domain ) {
-		$this->domain = $domain;
+	public function get_domain() : string {
+		return $this->domain;
 	}
 }

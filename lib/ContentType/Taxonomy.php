@@ -8,8 +8,7 @@ use csrui\WPConstruct\Plugin\Registerable;
  * Taxonomy handler.
  *
  * @since      0.0.1
- * @package    FCG
- * @subpackage Content/lib
+ * @package    WPPlugin
  * @author     Gulbenkian <devdigital@csrui.pt>
  */
 abstract class Taxonomy implements Registerable {

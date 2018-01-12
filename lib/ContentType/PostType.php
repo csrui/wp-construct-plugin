@@ -49,7 +49,7 @@ abstract class PostType implements Registerable {
 	 * If none was provided at first, it is infered from class name
 	 *
 	 * @since  0.0.1
-	 * @return string string
+	 * @return string The post type slug
 	 */
 	final public function get_slug() : string {
 

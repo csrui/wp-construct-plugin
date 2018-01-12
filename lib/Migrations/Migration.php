@@ -26,6 +26,8 @@ abstract class Migration {
 	 * Define plugin information
 	 *
 	 * @since  0.0.1
+	 * @param  string $plugin_name    The name of the plugin
+	 * @param  string $plugin_version Current version of the plugin
 	 * @return void
 	 */
 	public function __construct( string $plugin_name, string $plugin_version ) {

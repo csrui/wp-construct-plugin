@@ -26,3 +26,11 @@ $event_post_type = $agenda_plugin->load_class( 'Gulbenkian\WP\Plugin\FcgEventsCa
 
 $event_post_type->go_do_ma_thang();
 ```
+
+Let's say that I need to known the custom slug of the Event post type.
+
+```php
+$event_post_type = $agenda_plugin->load_class( 'Gulbenkian\WP\Plugin\FcgEventsCalendar\PostType\Event' );
+
+$event_post_type->get_slug();
+```

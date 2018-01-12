@@ -5,9 +5,14 @@
 - [x] Use composer to make the code available
 - [ ] Heavily documented to help other devs.
 - [ ] It should greatly improve DRY avoiding the current code / file repetition on every plugin.
-- [ ] Automate as much as possible without sacrificing customization.
-- [ ] Contain unit tests
-- [ ] Reduce the yeoman generator's output.
+- [ ] Automate as much as possible without sacrificing flexibility.
+- [ ] Reduce the yeoman generator's output from the previous project.
+
+## Whats included
+
+- [x] Documentation explaining how to use
+- [x] PHP CodeSniffer with WordPress coding standards
+- [x] PHPUnit + Unit Tests
 
 ## How To use
 

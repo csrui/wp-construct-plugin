@@ -14,7 +14,7 @@
 
 namespace csrui\WPConstruct\Plugin;
 
-use Registerable;
+use csrui\WPConstruct\Plugin\Registerable;
 
 /**
  * The core plugin class.

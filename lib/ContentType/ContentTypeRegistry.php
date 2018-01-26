@@ -25,15 +25,23 @@ class ContentTypeRegistry {
 	 * Registers content object with WordPress
 	 *
 	 * @since  0.0.1
-	 * @param  object $class Object that implements Registerable interface
+	 * @param  object|array $classes Object or Array of Object that implement Registerable interface
 	 * @return void
 	 */
-	public static function register( $class ) {
+	public static function register( $classes ) {
 
-		if ( $class instanceof Registerable ) {
+		if ( ! is_array( $classes ) ) {
+			$objects = [ $classes ];
+		} else {
+			$objects = $classes;
+		}
 
-			static::$classes[] = $class;
-			add_action( 'init', [ $class, 'register' ] );
+		foreach ( $objects as $obj ) {
+			if ( $obj instanceof Registerable ) {
+
+				static::$classes[] = $obj;
+				add_action( 'init', [ $obj, 'register' ] );
+			}
 		}
 	}
 

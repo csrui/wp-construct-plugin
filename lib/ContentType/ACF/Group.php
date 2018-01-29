@@ -112,7 +112,7 @@ abstract class Group implements Registerable {
 	 * @since  0.0.2
 	 * @return array List of arguments supported by ACF.
 	 */
-	abstract public function get_fields() : array;
+	abstract protected function get_fields() : array;
 
 	/**
 	 * acf_add_local_field_group location fields arguments
@@ -120,6 +120,6 @@ abstract class Group implements Registerable {
 	 * @since  0.0.2
 	 * @return array List of arguments supported by ACF.
 	 */
-	abstract public function get_locations() : array;
+	abstract protected function get_locations() : array;
 
 }

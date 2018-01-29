@@ -23,7 +23,7 @@ abstract class Group implements Registerable {
 	protected $key;
 
 	/**
-	 * Group default configuration container
+	 * ACF Group default configuration
 	 *
 	 * @since 0.0.2
 	 * @var   array;
@@ -60,6 +60,17 @@ abstract class Group implements Registerable {
 	}
 
 	/**
+	 * Returns the configured locations for the ACF group
+	 *
+	 * @since  0.0.2
+	 * @return array
+	 */
+	final public function get_locations() : array {
+
+		return $this->locations;
+	}
+
+	/**
 	 * Sets the group location
 	 *
 	 * @since  0.0.2
@@ -67,23 +78,35 @@ abstract class Group implements Registerable {
 	 */
 	private function get_location() : array {
 		$location = [];
-		$values   = $this->get_locations();
+		$params   = $this->get_locations();
 
-		foreach ( $values as $value ) {
-			$location[] = array(
-				array(
-					'param'    => $param,
-					'operator' => '==',
-					'value'    => $value,
-				)
-			);
+		foreach ( $params as $param => $values ) {
+			foreach ( $values as $value ) {
+				$location[] = array(
+					array(
+						'param'    => $param,
+						'operator' => '==',
+						'value'    => $value,
+					)
+				);
+			}
 		}
 		return $location;
 	}
 
-	public function __construct( array $group_args = [] ) {
+	/**
+	 * Class contructor
+	 *
+	 * Set the current locations for this field group.
+	 * Optionaly pass on some custom group parameters for the acf_add_local_field_group
+	 *
+	 * @param array $locations  List of ACF compatible locations
+	 * @param array $group_args List of ACF compatible arguments
+	 */
+	public function __construct( array $locations, array $group_args = [] ) {
 
-		$this->group_args = array_merge( $this->default_group_args, $group_args );
+		$this->locations  = $locations;
+		$this->group_args = $group_args;
 	}
 
 	/**
@@ -97,7 +120,7 @@ abstract class Group implements Registerable {
 			return;
 		}
 
-		$group_args = array_merge( $this->group_args, [
+		$group_args = array_merge( $this->default_group_args, $this->group_args, [
 			'key'      => $this->get_key(),
 			'fields'   => $this->get_fields(),
 			'location' => $this->get_location(),
@@ -113,13 +136,5 @@ abstract class Group implements Registerable {
 	 * @return array List of arguments supported by ACF.
 	 */
 	abstract protected function get_fields() : array;
-
-	/**
-	 * acf_add_local_field_group location fields arguments
-	 *
-	 * @since  0.0.2
-	 * @return array List of arguments supported by ACF.
-	 */
-	abstract protected function get_locations() : array;
 
 }

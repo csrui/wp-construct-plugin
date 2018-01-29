@@ -60,17 +60,6 @@ abstract class Group implements Registerable {
 	}
 
 	/**
-	 * Returns the configured locations for the ACF group
-	 *
-	 * @since  0.0.2
-	 * @return array
-	 */
-	final public function get_locations() : array {
-
-		return $this->locations;
-	}
-
-	/**
 	 * Sets the group location
 	 *
 	 * @since  0.0.2
@@ -95,15 +84,12 @@ abstract class Group implements Registerable {
 	/**
 	 * Class contructor
 	 *
-	 * Set the current locations for this field group.
 	 * Optionaly pass on some custom group parameters for the acf_add_local_field_group
 	 *
-	 * @param array $locations  List of ACF compatible locations
 	 * @param array $group_args List of ACF compatible arguments
 	 */
-	public function __construct( array $locations, array $group_args = [] ) {
+	public function __construct( array $group_args = [] ) {
 
-		$this->locations  = $locations;
 		$this->group_args = $group_args;
 	}
 
@@ -135,4 +121,11 @@ abstract class Group implements Registerable {
 	 */
 	abstract protected function get_fields() : array;
 
+	/**
+	 * Returns the configured locations for the ACF group
+	 *
+	 * @since  0.0.2
+	 * @return array
+	 */
+	abstract function get_locations() : array;
 }

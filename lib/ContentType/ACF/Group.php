@@ -127,5 +127,5 @@ abstract class Group implements Registerable {
 	 * @since  0.0.2
 	 * @return array
 	 */
-	abstract function get_locations() : array;
+	abstract protected function get_locations() : array;
 }

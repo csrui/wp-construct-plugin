@@ -111,6 +111,8 @@ abstract class Group implements Registerable {
 		] );
 
 		acf_add_local_field_group( $group_args );
+
+		$this->register_hooks();
 	}
 
 	/**
@@ -128,4 +130,11 @@ abstract class Group implements Registerable {
 	 * @return array
 	 */
 	abstract protected function get_locations() : array;
+
+	/**
+	 * Implement to register actions or filters after registering the fields
+	 *
+	 * @since 0.0.3
+	 */
+	abstract protected function register_hooks();
 }

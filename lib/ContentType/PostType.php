@@ -83,7 +83,10 @@ abstract class PostType implements Registerable {
 		}
 		register_post_type( $slug, $this->get_args() );
 
-		$this->register_hooks();
+		if ( method_exists( $this, 'register_hooks' ) ) {
+
+			$this->register_hooks();
+		}
 	}
 
 	/**
@@ -91,12 +94,6 @@ abstract class PostType implements Registerable {
 	 *
 	 * @since 0.0.1
 	 */
-	abstract public function get_args();
+	abstract protected function get_args() : array;
 
-	/**
-	 * Register hooks.
-	 *
-	 * @since 0.0.1
-	 */
-	abstract protected function register_hooks();
 }

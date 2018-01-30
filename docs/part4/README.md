@@ -65,8 +65,7 @@ The file is big, let's just cut through the cookie dough.
 
         return $args;
     }
-
-...
+}
 ```
 
 In case I want to register some filters, the method register_hooks() is
@@ -74,18 +73,25 @@ magically here to help. If you declare it on your class, it will be
 called after registering the custom post type.
 
 ```php
-...
+protected function register_hooks() {
 
-    protected function register_hooks() {
+    do_action( 'activate_unikorn' );
+}
+```
 
-        do_action( 'activate_unikorn' );
-    }
+The post type slug is inferred from the class name but let say we need
+to customise it to avoid a collision with another plugin.
 
+```php
+public function get_slug() : string {
+
+    return 'custom_slug';
 }
 ```
 
 ## Creating Taxonomies
 
+TODO: Add examples
 
 ## Creating Meta Fields
 
@@ -152,67 +158,13 @@ class ClosingDays extends Group {
 				'layout'       => 'row',
 				'button_label' => _x( 'Add more dates', 'Admin Fields', 'fcg-agenda' ),
 				'sub_fields'   => array(
-					array(
-						'key'               => 'field_5a6b030e43e1c',
-						'label'             => _x( 'Date', 'Admin Fields', 'fcg-agenda' ),
-						'name'              => 'date',
-						'type'              => 'date_picker',
-						'instructions'      => '',
-						'required'          => 1,
-						'conditional_logic' => 0,
-						'wrapper'           => array(
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						),
-						'display_format' => 'd/m/Y',
-						'return_format'  => 'Ymd',
-						'first_day'      => 1,
-					),
-					array(
-						'key'               => 'field_5a6b1d3c87aa5',
-						'label'             => _x( 'Reason', 'Admin Fields', 'fcg-agenda' ),
-						'name'              => 'reason',
-						'type'              => 'textarea',
-						'instructions'      => '',
-						'required'          => 0,
-						'conditional_logic' => 0,
-						'wrapper'           => array(
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						),
-						'default_value' => '',
-						'placeholder'   => _x( 'Reason for closing', 'Admin Fields', 'fcg-agenda' ),
-						'maxlength'     => '',
-						'rows'          => '',
-						'new_lines'     => '',
-						'readonly'      => 0,
-						'disabled'      => 0,
-					),
-					array(
-						'key'               => 'field_5a6b07425441c',
-						'label'             => _x( 'Locations', 'Admin Fields', 'fcg-agenda' ),
-						'name'              => 'locations',
-						'type'              => 'post_object',
-						'instructions'      => '',
-						'required'          => 1,
-						'conditional_logic' => 0,
-						'wrapper'           => array(
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						),
-						'post_type' => array(
-							0 => 'location',
-						),
-						'taxonomy' => array(
-						),
-						'allow_null'    => 0,
-						'multiple'      => 1,
-						'return_format' => 'id',
-						'ui'            => 1,
-					),
+...
+```
+
+Many fields configuration, copied from ACF export.
+
+```php
+...					
 				),
 				'collapsed' => '',
 			),

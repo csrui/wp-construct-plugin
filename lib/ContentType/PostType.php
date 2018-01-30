@@ -3,6 +3,7 @@
 namespace csrui\WPConstruct\Plugin\ContentType;
 
 use csrui\WPConstruct\Plugin\Registerable;
+use csrui\WPConstruct\Plugin\Sluggable;
 
 /**
  * Post type handler.
@@ -13,14 +14,7 @@ use csrui\WPConstruct\Plugin\Registerable;
  */
 abstract class PostType implements Registerable {
 
-	/**
-	 * The custom post type slug.
-	 *
-	 * @since  0.0.1
-	 * @access protected
-	 * @var string
-	 */
-	protected $slug;
+	use Sluggable;
 
 	/**
 	 * A list of taxonomies associated with the custom post type.
@@ -35,29 +29,23 @@ abstract class PostType implements Registerable {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since 0.0.1
-	 * @param string $slug       The post type slug.
 	 * @param array  $taxonomies A list of taxonomies associated with the post type.
 	 */
-	public function __construct( $slug = null, array $taxonomies = [] ) {
-		$this->slug       = $slug;
+	public function __construct( array $taxonomies = [] ) {
 		$this->taxonomies = $taxonomies;
 	}
 
 	/**
 	 * Returns the post type slug
 	 *
-	 * If none was provided at first, it is infered from class name
+	 * Can be overriden on extending class for custom slug
 	 *
 	 * @since  0.0.1
-	 * @return string The post type slug
+	 * @return string string
 	 */
-	final public function get_slug() : string {
+	public function get_slug() : string {
 
-		if ( empty( $this->slug ) ) {
-			$this->slug = strtolower( ( new \ReflectionClass( $this ) )->getShortName() );
-		}
-
-		return $this->slug;
+		return $this->get_auto_slug();
 	}
 
 	/**

@@ -60,7 +60,7 @@ abstract class Migration {
 			dbDelta( $query );
 		}
 
-		add_site_option( $this->get_key_name(), $this->plugin_version );
+		update_site_option( $this->get_key_name(), $this->plugin_version );
 	}
 
 	/**
@@ -77,6 +77,20 @@ abstract class Migration {
 	}
 
 	/**
+	 * Return plugin name
+	 *
+	 * Cleans up whatever plugin name to strip invalid chars
+	 *
+	 * @since  0.0.1
+	 * @return string Cleaned up plugin name
+	 */
+	protected function get_plugin_name() : string {
+
+		//TODO Improve name cleanup
+		return str_replace( '-', '_', $this->plugin_name );
+	}
+
+	/**
 	 * Return the table name with prefix
 	 *
 	 * @since  0.0.1
@@ -87,7 +101,7 @@ abstract class Migration {
 
 		global $wpdb;
 
-		$base = $wpdb->base_prefix . $this->plugin_name;
+		$base = $wpdb->base_prefix . $this->get_plugin_name();
 
 		return empty( $table ) ? $base : $base . '_' . $table;
 	}
@@ -100,7 +114,7 @@ abstract class Migration {
 	 */
 	protected function get_key_name() : string {
 
-		return $this->plugin_name . '_db_version';
+		return $this->get_plugin_name() . '_db_version';
 	}
 
 	/**
@@ -111,6 +125,6 @@ abstract class Migration {
 	 */
 	protected function should_update() : bool {
 
-		return \get_site_option( $this->get_key_name() ) !== $this->plugin_version;
+		return get_site_option( $this->get_key_name() ) !== $this->plugin_version;
 	}
 }

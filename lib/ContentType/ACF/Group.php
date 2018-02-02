@@ -116,6 +116,12 @@ abstract class Group implements Registerable {
 
 			$this->register_hooks();
 		}
+
+		// Brought by trait RestableFields
+		if ( method_exists( $this, 'register_rest_fields' ) ) {
+
+			$this->register_rest_fields( $this->get_locations() );
+		}
 	}
 
 	/**

@@ -5,7 +5,7 @@ namespace csrui\WPConstruct\Plugin\ContentType;
 use csrui\WPConstruct\Plugin\Registerable;
 
 /**
- * Handles registering PostTypes and Taxonomies
+ * Handles registering PostTypes, Fields and Taxonomies
  *
  * @since      0.0.1
  * @package    WPPlugin

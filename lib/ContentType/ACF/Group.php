@@ -116,12 +116,6 @@ abstract class Group implements Registerable {
 
 			$this->register_hooks();
 		}
-
-		// Brought by trait RestableFields
-		if ( method_exists( $this, 'register_rest_fields' ) ) {
-
-			$this->register_rest_fields( $this->get_locations() );
-		}
 	}
 
 	/**
@@ -130,7 +124,7 @@ abstract class Group implements Registerable {
 	 * @since  0.0.2
 	 * @return array List of arguments supported by ACF.
 	 */
-	abstract protected function get_fields() : array;
+	abstract public function get_fields() : array;
 
 	/**
 	 * Returns the configured locations for the ACF group
@@ -138,6 +132,6 @@ abstract class Group implements Registerable {
 	 * @since  0.0.2
 	 * @return array
 	 */
-	abstract protected function get_locations() : array;
+	abstract public function get_locations() : array;
 
 }

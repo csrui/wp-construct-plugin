@@ -15,7 +15,9 @@
         "url": "git@github.com:nlemoine/wp-cli-fixtures.git"
       }
     ],
-    "require": {},
+    "require": {
+        "wp-cli/wp-cli": "^1.5"
+    },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
         "hellonico/wp-cli-fixtures": "dev-master",
@@ -26,7 +28,8 @@
     "autoload": {
         "psr-4": {
             "csrui\\WPConstruct\\Plugin\\": "lib"
-        }
+        },
+        "files": [ "cli.php" ]
     },
     "config": {
       "sort-packages": true

@@ -12,4 +12,6 @@
   * [Creating Taxonomies](/content_types/README.md#creating-taxonomies)
   * [Creating Meta Fields](/content_types/README.md#creating-meta-fields)
   * [Exposing REST Fields](/content_types/rest.md#exposing-rest-fields)
+* [Fixtures](/fixtures/README.md)
+* [CLI](/cli/README.md)
 * [External Usage](/others/README.md)

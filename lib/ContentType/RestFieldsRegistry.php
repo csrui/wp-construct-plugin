@@ -84,15 +84,15 @@ class RestFieldsRegistry {
 		return $data;
 	}
 
-	static protected function get_objects_to_register() : array {
+	static protected function get_objects_to_register( array $plugin_components = [] ) : array {
 
 		$data    = [];
 		$objects = [];
 
-		foreach ( ContentTypeRegistry::get() as $class ) {
+		foreach ( $plugin_components as $component ) {
 
-			if ( $class instanceof RestFields ) {
-				$objects[] = $class;
+			if ( $component instanceof RestFields ) {
+				$objects[] = $component;
 			}
 		}
 
@@ -101,9 +101,9 @@ class RestFieldsRegistry {
 		return $data;
 	}
 
-	static public function register() {
+	static public function register( array $plugin_components = [] ) {
 
-		$objects_to_register = static::get_objects_to_register();
+		$objects_to_register = static::get_objects_to_register( $plugin_components );
 
 		add_action( 'rest_api_init', function() use ( $objects_to_register ) {
 

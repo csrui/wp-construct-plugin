@@ -46,13 +46,24 @@ trait ClassLoader {
 		return $this->loaded[ $obj_hash ];
 	}
 
-	public function loaded() : array {
+	/**
+	 * Get list of all loaded components
+	 *
+	 * @since  0.0.3
+	 * @return array List of objects
+	 */
+	public function get_loaded() : array {
 		return $this->loaded;
 	}
 
+	/**
+	 * Automatically register PostTypes, Taxonomies and Field Groups
+	 *
+	 * @since  0.0.3
+	 */
 	public function autoregister() {
 
-		$objects = $this->loaded();
+		$objects = $this->get_loaded();
 
 		if ( empty( $objects ) ) {
 			return;
@@ -64,17 +75,11 @@ trait ClassLoader {
 				continue;
 			}
 
-			if ( $obj instanceof PostType || $obj instanceof Taxonomy || $obj instanceof Group ) {
-				add_action( 'init', [ $obj, 'register' ] );
+			if ( ! $obj instanceof PostType || ! $obj instanceof Taxonomy || ! $obj instanceof Group ) {
 				continue;
 			}
 
-			if ( $obj instanceof FieldType ) {
-
-				// add_action( 'acf/include_field_types', function() use ( $obj ) {
-				// 	$weekly_sessions = new ACF\Fields\WeeklySessions( [] );
-				// });
-			}
+			add_action( 'init', [ $obj, 'register' ] );
 		}
 	}
 }

@@ -14,5 +14,6 @@
   * [Exposing REST Fields](/content_types/rest.md#exposing-rest-fields)
 * [ACF](/acf/README.md)
 * [Fixtures](/fixtures/README.md)
+* [REST API](/rest/README.md)
 * [CLI](/cli/README.md)
 * [External Usage](/others/README.md)

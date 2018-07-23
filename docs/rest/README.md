@@ -5,7 +5,7 @@ To create quick custom REST routes.
 ```php
 use \csrui\WPConstruct\Plugin\API\Routes;
 
-$routes = new RestRoutes();
+$routes = new Routes();
 $routes->add( '/list/test', 'GET', \FCG\WP\Plugin\Agenda\API\Messages::class );
 $routes->add( '/create', 'POST', \FCG\WP\Plugin\Agenda\API\Messages::class );
 

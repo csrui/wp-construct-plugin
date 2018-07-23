@@ -1,11 +1,11 @@
 <?php
 
-namespace FCG\WP\Plugin\Egrants\API;
+namespace csrui\WPConstruct\Plugin\API;
 
 use FCG\WP\Plugin\Egrants\Plugin;
 
 /**
- * Create all api routes.
+ * Register all api routes.
  *
  * @since      0.0.1
  * @package    Gulbenkian
@@ -15,7 +15,7 @@ class Routes {
 
 	protected $routes = [];
 
-	public function add( $endpoint, $method, $class, $callback = null ) {
+	public function add( string $endpoint, string $method, $class, $callback = null ) {
 
 		if ( $callback === null ) {
 			$callback = \strtolower( $method ) . strtolower( str_replace( '/', '_', $endpoint ) );

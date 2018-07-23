@@ -1,9 +1,9 @@
 <?php
 
-namespace FCG\WP\Plugin\Egrants\API;
+namespace csrui\WPConstruct\Plugin\API;
 
 /**
- * Create all api routes.
+ * Create an api routes.
  *
  * @since      0.0.1
  * @package    Gulbenkian
@@ -11,7 +11,7 @@ namespace FCG\WP\Plugin\Egrants\API;
  */
 class Route {
 
-	public function __construct( $endpoint, $method, $callback ) {
+	public function __construct( string $endpoint, string $method, $callback ) {
 
 		$this->endpoint = $endpoint;
 		$this->method   = $method;

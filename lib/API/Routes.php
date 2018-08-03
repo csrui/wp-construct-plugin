@@ -17,9 +17,27 @@ class Routes {
 
 	public function add( string $endpoint, string $method, $class, $callback = null ) {
 
-		if ( $callback === null ) {
-			$callback = \strtolower( $method ) . strtolower( str_replace( '/', '_', $endpoint ) );
+		$method = strtolower( $method );
+
+		if ( $callback !== null ) {
+
+			$this->routes[] = new Route( $endpoint, $method, [ $class, $callback ] );
+			return;
 		}
+
+		// If no callback is defined, set a default one.
+		$class_namespaces = explode( '\\', $class );
+		$class_name       = strtolower( end( $class_namespaces ) );
+		$action           = strtolower( str_replace( '/', '_', $endpoint ) );
+		unset( $class_namespaces );
+
+		// For sake of speed let's default to "list".
+		if ( $class_name === substr( $action, 1 ) ) {
+			$action = ( $method === 'post' ) ? '_create' : '_list';
+		}
+
+		$callback = $method . $action;
+
 		$this->routes[] = new Route( $endpoint, $method, [ $class, $callback ] );
 	}
 

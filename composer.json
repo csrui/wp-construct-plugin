@@ -1,6 +1,7 @@
 {
     "name": "csrui/wp-construct-plugin",
     "description": "Base library with plugin functionality to be extended on WordPress plugins",
+    "type": "library",
     "license": "MIT",
     "keywords": ["wp", "wordpress"],
     "authors": [
@@ -16,7 +17,7 @@
       }
     ],
     "require": {
-        "wp-cli/wp-cli": "^1.5"
+        "wp-cli/wp-cli": "2.0.1"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",

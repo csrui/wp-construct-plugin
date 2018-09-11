@@ -17,11 +17,11 @@
       }
     ],
     "require": {
+        "hellonico/wp-cli-fixtures": "dev-master",
         "wp-cli/wp-cli": "2.0.1"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
-        "hellonico/wp-cli-fixtures": "dev-master",
         "phpunit/phpunit": "4.0.*",
         "squizlabs/php_codesniffer": "^3.2",
         "wp-coding-standards/wpcs": "^0.14.0"

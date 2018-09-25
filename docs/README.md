@@ -13,6 +13,8 @@
 - [x] Documentation explaining how to use
 - [x] PHP CodeSniffer with WordPress coding standards
 - [x] PHPUnit + Unit Tests
+- [ ] WP CLI with custom commands
+- [ ] Fixture generator
 
 ## How To use
 

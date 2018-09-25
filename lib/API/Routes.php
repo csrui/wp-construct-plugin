@@ -15,6 +15,15 @@ class Routes {
 
 	protected $routes = [];
 
+	/**
+	 * Defines a new route.
+	 *
+	 * @since 0.0.1
+	 * @param string $endpoint Endpoint to respond.
+	 * @param string $method   HTTP method.
+	 * @param object $class    Object that will handle the callback.
+	 * @param string $callback Custom method to answer to the endpoint.
+	 */
 	public function add( string $endpoint, string $method, $class, $callback = null ) {
 
 		$method = strtolower( $method );

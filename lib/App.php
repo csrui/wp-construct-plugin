@@ -119,7 +119,7 @@ abstract class App implements Registerable {
 	 * @access   private
 	 */
 	private function set_locale() {
-		$plugin_i18n = $this->load_class( I18n::class, [ $this->get_plugin_name() ] );
+		$plugin_i18n = $this->load( I18n::class, $this->get_plugin_name() );
 		$plugin_i18n->register();
 	}
 

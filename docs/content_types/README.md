@@ -4,9 +4,9 @@ Registering content types with your WordPress plugin.
 
 Let's look at the 3 types of content.
 
-* [Creating Post Types](/part4/README.md#creating-post-types)
-* [Creating Taxonomies](/part4/README.md#creating-taxonomies)
-* [Creating Meta Fields](/part4/README.md#creating-meta-fields)
+* [Creating Post Types](/content_types/README.md#creating-post-types)
+* [Creating Taxonomies](/content_types/README.md#creating-taxonomies)
+* [Creating Meta Fields](/content_types/README.md#creating-meta-fields)
 
 ## Creating Post Types
 
@@ -124,7 +124,7 @@ class ClosingDays extends Group {
 	 * @since  0.0.1
 	 * @return array
 	 */
-	protected function get_locations() : array {
+	public function get_locations() : array {
 
 		return [
 			'options_page' => 'acf-options-closing-days',
@@ -137,7 +137,7 @@ class ClosingDays extends Group {
 	 * @since  0.0.1
 	 * @return array List of fields
 	 */
-	protected function get_fields() : array {
+	public function get_fields() : array {
 
 		$fields = array(
 			array(

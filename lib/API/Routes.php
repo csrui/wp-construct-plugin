@@ -28,6 +28,10 @@ class Routes {
 
 		$method = strtolower( $method );
 
+		if ( class_exist( $class ) !== true ) {
+			return;
+		}
+
 		if ( $callback !== null ) {
 
 			$this->routes[] = new Route( $endpoint, $method, [ $class, $callback ] );

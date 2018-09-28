@@ -68,9 +68,9 @@ class Routes {
 
 		foreach ( $this->routes as $route ) {
 
-			register_rest_route( Plugin::NAMESPACE_API, $route->endpoint, [
-				'methods'  => $route->method,
-				'callback' => $route->callback,
+			register_rest_route( Plugin::NAMESPACE_API, $route->endpoint(), [
+				'methods'  => $route->method(),
+				'callback' => $route->callback(),
 			] );
 		}
 	}

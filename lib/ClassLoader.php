@@ -75,10 +75,6 @@ trait ClassLoader {
 				continue;
 			}
 
-			if ( ! $obj instanceof PostType && ! $obj instanceof Taxonomy && ! $obj instanceof Group ) {
-				continue;
-			}
-
 			add_action( 'init', [ $obj, 'register' ] );
 		}
 	}

@@ -12,6 +12,30 @@ namespace csrui\WPConstruct\Plugin\API;
 class Route {
 
 	/**
+	 * Route endpoint.
+	 *
+	 * @since 0.0.0
+	 * @var   string
+	 */
+	private $endpoint;
+
+	/**
+	 * HTTP Method
+	 *
+	 * @since 0.0.0
+	 * @var   string
+	 */
+	private $method;
+
+	/**
+	 * Callback to fire.
+	 *
+	 * @since 0.0.0
+	 * @var   array
+	 */
+	private $callback;
+
+	/**
 	 * Route configuration.
 	 *
 	 * @since 0.0.1
@@ -24,5 +48,35 @@ class Route {
 		$this->endpoint = $endpoint;
 		$this->method   = $method;
 		$this->callback = $callback;
+	}
+
+	/**
+	 * Returns API endpoint.
+	 *
+	 * @since  0.0.0
+	 * @return string
+	 */
+	public function endpoint() : string {
+		return $this->endpoint;
+	}
+
+	/**
+	 * Returns HTTP Method.
+	 *
+	 * @since  0.0.0
+	 * @return string
+	 */
+	public function method() : string {
+		return $this->method;
+	}
+
+	/**
+	 * Returns the callback.
+	 *
+	 * @since  0.0.0
+	 * @return array
+	 */
+	public function callback() : array {
+		return $this->callback;
 	}
 }

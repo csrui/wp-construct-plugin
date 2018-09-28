@@ -34,13 +34,13 @@ trait ClassLoader {
 	 * @param  array  $params     Class constructor parameters
 	 * @return object             Returns instanciated class object
 	 */
-	public final function load( string $class_name, ...$param ) {
+	public final function load( string $class_name, ...$params ) {
 
 		$obj_hash = md5( json_encode( func_get_args() ) );
 
 		if ( ! isset( $this->loaded[ $obj_hash ] ) ) {
 			$new_obj                   = new \ReflectionClass( $class_name );
-			$this->loaded[ $obj_hash ] = $new_obj->newInstanceArgs( $param );
+			$this->loaded[ $obj_hash ] = $new_obj->newInstanceArgs( $params );
 		}
 
 		return $this->loaded[ $obj_hash ];

@@ -61,6 +61,13 @@ class RestFieldsRegistry {
 		return $data;
 	}
 
+	/**
+	 * Sort objects into specified groups.
+	 *
+	 * @since  0.0.0
+	 * @param  array $objects
+	 * @return array
+	 */
 	static protected function sorter( array $objects = [] ) : array {
 
 		$data = [];
@@ -85,6 +92,13 @@ class RestFieldsRegistry {
 		return $data;
 	}
 
+	/**
+	 * Get a list of RestFields to register.
+	 *
+	 * @since  0.0.0
+	 * @param  array $plugin_components
+	 * @return array
+	 */
 	static protected function get_objects_to_register( array $plugin_components = [] ) : array {
 
 		$data    = [];
@@ -102,6 +116,13 @@ class RestFieldsRegistry {
 		return $data;
 	}
 
+	/**
+	 * Register each RestFields component.
+	 *
+	 * @since  0.0.0
+	 * @param  array $plugin_components
+	 * @return array
+	 */
 	static public function register( array $plugin_components = [] ) {
 
 		$objects_to_register = static::get_objects_to_register( $plugin_components );

@@ -51,9 +51,10 @@ class RestFieldsRegistry {
 				// Check first if a custom getter was defined for a given field
 				if ( is_callable( [ $obj, "get_rest_{$field}" ] ) ) {
 					$data[ $field ] = call_user_func( [ $obj, "get_rest_{$field}" ] );
-				} else {
-					$data[ $field ] = get_field( $field, $post['id'] );
+					continue;
 				}
+
+				$data[ $field ] = get_field( $field, $post['id'] );
 			}
 		}
 

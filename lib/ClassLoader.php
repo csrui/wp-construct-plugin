@@ -2,6 +2,13 @@
 
 namespace csrui\WPConstruct\Plugin;
 
+use csrui\WPConstruct\Plugin\Registerable;
+use csrui\WPConstruct\Plugin\ContentType\PostType;
+use csrui\WPConstruct\Plugin\ContentType\Taxonomy;
+use csrui\WPConstruct\Plugin\ContentType\ACF\FieldType;
+use csrui\WPConstruct\Plugin\ContentType\ACF\Group;
+
+
 /**
  * Class loader to help keep and access instanciated objects
  *
@@ -27,7 +34,7 @@ trait ClassLoader {
 	 * @param  array  $params     Class constructor parameters
 	 * @return object             Returns instanciated class object
 	 */
-	public final function load_class( string $class_name, array $params = [] ) {
+	public final function load( string $class_name, ...$params ) {
 
 		$obj_hash = md5( json_encode( func_get_args() ) );
 
@@ -37,5 +44,38 @@ trait ClassLoader {
 		}
 
 		return $this->loaded[ $obj_hash ];
+	}
+
+	/**
+	 * Get list of all loaded components
+	 *
+	 * @since  0.0.3
+	 * @return array List of objects
+	 */
+	public function get_loaded() : array {
+		return $this->loaded;
+	}
+
+	/**
+	 * Automatically register PostTypes, Taxonomies and Field Groups
+	 *
+	 * @since  0.0.3
+	 */
+	public function autoregister() {
+
+		$objects = $this->get_loaded();
+
+		if ( empty( $objects ) ) {
+			return;
+		}
+
+		foreach ( $objects as $obj ) {
+
+			if ( ! $obj instanceof Registerable ) {
+				continue;
+			}
+
+			add_action( 'init', [ $obj, 'register' ] );
+		}
 	}
 }

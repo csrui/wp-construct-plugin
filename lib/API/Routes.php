@@ -48,7 +48,7 @@ class Routes {
 		}
 
 		// Check if either given or automagic callback are available.
-		if ( is_callable( $callback ) !== true ) {
+		if ( is_callable( [ $class, $callback ] ) !== true ) {
 			return;
 		}
 

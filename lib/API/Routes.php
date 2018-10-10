@@ -32,24 +32,25 @@ class Routes {
 			return;
 		}
 
-		if ( $callback !== null ) {
+		// If no callback is defined, set a default one.
+		if ( is_null( $callback ) ) {
+			$class_namespaces = explode( '\\', $class );
+			$class_name       = strtolower( end( $class_namespaces ) );
+			$action           = strtolower( str_replace( '/', '_', $endpoint ) );
+			unset( $class_namespaces );
 
-			$this->routes[] = new Route( $endpoint, $method, [ $class, $callback ] );
+			// For sake of speed let's default to "list".
+			if ( $class_name === substr( $action, 1 ) ) {
+				$action = ( $method === 'post' ) ? '_create' : '_list';
+			}
+
+			$callback = $method . $action;
+		}
+
+		// Check if either given or automagic callback are available.
+		if ( is_callable( $callback ) !== true ) {
 			return;
 		}
-
-		// If no callback is defined, set a default one.
-		$class_namespaces = explode( '\\', $class );
-		$class_name       = strtolower( end( $class_namespaces ) );
-		$action           = strtolower( str_replace( '/', '_', $endpoint ) );
-		unset( $class_namespaces );
-
-		// For sake of speed let's default to "list".
-		if ( $class_name === substr( $action, 1 ) ) {
-			$action = ( $method === 'post' ) ? '_create' : '_list';
-		}
-
-		$callback = $method . $action;
 
 		$this->routes[] = new Route( $endpoint, $method, [ $class, $callback ] );
 	}

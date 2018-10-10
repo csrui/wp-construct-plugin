@@ -9,19 +9,13 @@
       "email": "admdigital@csrui.pt"
     }
   ],
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "git@github.com:nlemoine/wp-cli-fixtures.git"
-    }
-  ],
   "require": {
     "php": ">=7.1",
     "wp-cli/wp-cli": "2.0.1"
   },
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
-    "hellonico/wp-cli-fixtures": "dev-master",
+    "hellonico/wp-cli-fixtures": "^0.2.0",
     "phpunit/phpunit": "4.0.*",
     "squizlabs/php_codesniffer": "^3.2",
     "wp-coding-standards/wpcs": "^0.14.0"

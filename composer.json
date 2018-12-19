@@ -6,8 +6,8 @@
     "keywords": ["wp", "wordpress"],
     "authors": [
         {
-            "name": "Gulbenkian",
-            "email": "devdigital@csrui.pt"
+          "name": "Rui Sardinha",
+          "email": "admdigital@csrui.pt"
         }
     ],
     "repositories": [
@@ -17,6 +17,7 @@
       }
     ],
     "require": {
+        "php": ">=7.1",
         "hellonico/wp-cli-fixtures": "dev-master",
         "wp-cli/wp-cli": "2.0.1"
     },

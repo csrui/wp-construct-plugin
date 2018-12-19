@@ -54,28 +54,42 @@ class Routes {
 		}
 	}
 
+	/**
+	 * Defines a new route.
+	 *
+	 * @since 0.0.1
+	 * @param string $endpoint Endpoint to respond.
+	 * @param string $method   HTTP method.
+	 * @param object $class    Object that will handle the callback.
+	 * @param string $callback Custom method to answer to the endpoint.
+	 */
 	public function add( string $endpoint, string $method, $class, $callback = null ) {
 
 		$method = strtolower( $method );
 
-		if ( $callback !== null ) {
-
-			$this->routes[] = new Route( $endpoint, $method, [ $class, $callback ] );
+		if ( class_exists( $class ) !== true ) {
 			return;
 		}
 
 		// If no callback is defined, set a default one.
-		$class_namespaces = explode( '\\', $class );
-		$class_name       = strtolower( end( $class_namespaces ) );
-		$action           = strtolower( str_replace( '/', '_', $endpoint ) );
-		unset( $class_namespaces );
+		if ( is_null( $callback ) ) {
+			$class_namespaces = explode( '\\', $class );
+			$class_name       = strtolower( end( $class_namespaces ) );
+			$action           = strtolower( str_replace( '/', '_', $endpoint ) );
+			unset( $class_namespaces );
 
-		// For sake of speed let's default to "list".
-		if ( $class_name === substr( $action, 1 ) ) {
-			$action = ( $method === 'post' ) ? '_create' : '_list';
+			// For sake of speed let's default to "list".
+			if ( $class_name === substr( $action, 1 ) ) {
+				$action = ( $method === 'post' ) ? '_create' : '_list';
+			}
+
+			$callback = $method . $action;
 		}
 
-		$callback = $method . $action;
+		// Check if either given or automagic callback are available.
+		if ( is_callable( [ $class, $callback ] ) !== true ) {
+			return;
+		}
 
 		$this->routes[] = new Route( $endpoint, $method, [ $class, $callback ] );
 	}
@@ -100,9 +114,9 @@ class Routes {
 
 		foreach ( $this->routes as $route ) {
 
-			register_rest_route( $this->namespace, $route->endpoint, [
-				'methods'  => $route->method,
-				'callback' => $route->callback,
+			register_rest_route( $this->namespace, $route->endpoint(), [
+				'methods'  => $route->method(),
+				'callback' => $route->callback(),
 				'permission_callback' => $permission,
 			] );
 		}

@@ -51,15 +51,23 @@ class RestFieldsRegistry {
 				// Check first if a custom getter was defined for a given field
 				if ( is_callable( [ $obj, "get_rest_{$field}" ] ) ) {
 					$data[ $field ] = call_user_func( [ $obj, "get_rest_{$field}" ] );
-				} else {
-					$data[ $field ] = get_field( $field, $post['id'] );
+					continue;
 				}
+
+				$data[ $field ] = get_field( $field, $post['id'] );
 			}
 		}
 
 		return $data;
 	}
 
+	/**
+	 * Sort objects into specified groups.
+	 *
+	 * @since  0.0.0
+	 * @param  array $objects
+	 * @return array
+	 */
 	static protected function sorter( array $objects = [] ) : array {
 
 		$data = [];
@@ -84,6 +92,13 @@ class RestFieldsRegistry {
 		return $data;
 	}
 
+	/**
+	 * Get a list of RestFields to register.
+	 *
+	 * @since  0.0.0
+	 * @param  array $plugin_components
+	 * @return array
+	 */
 	static protected function get_objects_to_register( array $plugin_components = [] ) : array {
 
 		$data    = [];
@@ -101,6 +116,13 @@ class RestFieldsRegistry {
 		return $data;
 	}
 
+	/**
+	 * Register each RestFields component.
+	 *
+	 * @since  0.0.0
+	 * @param  array $plugin_components
+	 * @return array
+	 */
 	static public function register( array $plugin_components = [] ) {
 
 		$objects_to_register = static::get_objects_to_register( $plugin_components );

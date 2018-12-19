@@ -10,7 +10,7 @@ namespace csrui\WPConstruct\Plugin\Migrations;
  *
  * @since      0.0.1
  * @package    WPPlugin
- * @author     Gulbenkian <devdigital@csrui.pt>
+ * @author     Rui Sardinha <mail@ruisardinha.com>
  */
 abstract class Migration {
 

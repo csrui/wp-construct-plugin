@@ -19,7 +19,7 @@ namespace FCG\Agenda;
  *
  * @since      0.0.1
  * @package    Gulbenkian
- * @author     Gulbenkian <devdigital@csrui.pt>
+ * @author     Rui Sardinha <mail@ruisardinha.com>
  */
 final class Plugin {
 
@@ -48,7 +48,7 @@ use Plugin;
  *
  * @since      0.0.1
  * @package    Gulbenkian
- * @author     Gulbenkian <devdigital@csrui.pt>
+ * @author     Rui Sardinha <mail@ruisardinha.com>
  */
 final class PluginFactory {
 

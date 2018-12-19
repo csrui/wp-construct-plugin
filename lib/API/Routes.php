@@ -10,7 +10,7 @@ use csrui\WPConstruct\Plugin\API\PermissionInterface;
  *
  * @since      0.0.1
  * @package    Gulbenkian
- * @author     Gulbenkian <devdigital@csrui.pt>
+ * @author     Rui Sardinha <mail@ruisardinha.com>
  */
 class Routes {
 
@@ -115,8 +115,8 @@ class Routes {
 		foreach ( $this->routes as $route ) {
 
 			register_rest_route( $this->namespace, $route->endpoint(), [
-				'methods'  => $route->method(),
-				'callback' => $route->callback(),
+				'methods'             => $route->method(),
+				'callback'            => $route->callback(),
 				'permission_callback' => $permission,
 			] );
 		}

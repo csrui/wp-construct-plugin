@@ -10,7 +10,7 @@ use csrui\WPConstruct\Plugin\Sluggable;
  *
  * @since      0.0.1
  * @package    WPPlugin
- * @author     Gulbenkian <devdigital@csrui.pt>
+ * @author     Rui Sardinha <mail@ruisardinha.com>
  */
 abstract class Taxonomy implements Registerable {
 

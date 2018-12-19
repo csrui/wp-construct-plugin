@@ -27,7 +27,7 @@ use csrui\WPConstruct\Plugin\Registerable;
  *
  * @since      0.0.1
  * @package    WPPlugin
- * @author     Gulbenkian <devdigital@csrui.pt>
+ * @author     Rui Sardinha <mail@ruisardinha.com>
  */
 abstract class App implements Registerable {
 

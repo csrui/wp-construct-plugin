@@ -23,7 +23,7 @@ namespace FCG\WP\Plugin\Agenda\API;
  *
  * @since      0.0.0
  * @package    FCG
- * @author     Gulbenkian <devdigital@csrui.pt>
+ * @author     Rui Sardinha <mail@ruisardinha.com>
  */
 class Messages {
 
@@ -61,7 +61,7 @@ use csrui\WPConstruct\Plugin\API\PermissionInterface as PermissionInterface;
  *
  * @since      0.0.0
  * @package    FCG
- * @author     Gulbenkian <devdigital@csrui.pt>
+ * @author     Rui Sardinha <mail@ruisardinha.com>
  */
 class CookiePermission implements PermissionInterface {
 

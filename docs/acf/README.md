@@ -15,7 +15,7 @@ use csrui\WPConstruct\Plugin\ContentType\ACF\FieldType;
  * @since      0.0.2
  * @package    FCG
  * @subpackage Agenda/lib/ACF/Fields
- * @author     Gulbenkian <devdigital@csrui.pt>
+ * @author     Rui Sardinha <mail@ruisardinha.com>
  */
 class WeeklySessions extends FieldType {
 

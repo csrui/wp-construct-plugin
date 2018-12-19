@@ -50,7 +50,7 @@ use \csrui\WPConstruct\Plugin\ContentType\RestFields;
  * @since      0.0.1
  * @package    FCG
  * @subpackage Agenda/lib/Fields
- * @author     Gulbenkian <devdigital@csrui.pt>
+ * @author     Rui Sardinha <mail@ruisardinha.com>
  */
 class BasicEvent extends Group implements RestFields {
 

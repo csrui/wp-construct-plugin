@@ -14,7 +14,7 @@ use csrui\WPConstruct\Plugin\ContentType\ACF\Group;
  *
  * @since      0.0.1
  * @package    WPPlugin
- * @author     Gulbenkian <devdigital@csrui.pt>
+ * @author     Rui Sardinha <mail@ruisardinha.com>
  */
 trait ClassLoader {
 
@@ -72,6 +72,10 @@ trait ClassLoader {
 		foreach ( $objects as $obj ) {
 
 			if ( ! $obj instanceof Registerable ) {
+				continue;
+			}
+
+			if ( ! $obj instanceof PostType && ! $obj instanceof Taxonomy && ! $obj instanceof Group ) {
 				continue;
 			}
 

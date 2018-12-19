@@ -2,18 +2,57 @@
 
 namespace csrui\WPConstruct\Plugin\API;
 
-use FCG\WP\Plugin\Egrants\Plugin;
+use csrui\WPConstruct\Plugin;
+use csrui\WPConstruct\Plugin\API\PermissionInterface;
 
 /**
  * Register all api routes.
  *
  * @since      0.0.1
  * @package    Gulbenkian
- * @author     Gulbenkian <devdigital@csrui.pt>
+ * @author     Rui Sardinha <mail@ruisardinha.com>
  */
 class Routes {
 
+	/**
+	 * Holds the list of Routes.
+	 *
+	 * @since 0.0.1
+	 * @var   array
+	 */
 	protected $routes = [];
+
+	/**
+	 * The route namespace.
+	 * 
+	 * @since 0.0.1
+	 * @var string
+	 */
+	protected $namespace;
+
+	/**
+	 * Holds the permission object
+	 *
+	 * @since 0.0.1
+	 * @var   object
+	 */
+	protected $permission;
+
+	/**
+	 * Defines the routes namespace and optional permissions.
+	 *
+	 * @since 0.0.1
+	 * @param string $namespace
+	 * @param object $permission
+	 */
+	public function __construct( string $namespace, $permission = null ) {
+
+		$this->namespace = $namespace;
+
+		if ( $permission instanceof PermissionInterface ) {
+			$this->permission = $permission;
+		}
+	}
 
 	/**
 	 * Defines a new route.
@@ -28,7 +67,7 @@ class Routes {
 
 		$method = strtolower( $method );
 
-		if ( class_exist( $class ) !== true ) {
+		if ( class_exists( $class ) !== true ) {
 			return;
 		}
 
@@ -67,11 +106,18 @@ class Routes {
 			return;
 		}
 
+		$permission = null;
+
+		if ( $this->permission instanceof PermissionInterface ) {
+			$permission = [ $this->permission, 'register' ];
+		}
+
 		foreach ( $this->routes as $route ) {
 
-			register_rest_route( Plugin::NAMESPACE_API, $route->endpoint(), [
-				'methods'  => $route->method(),
-				'callback' => $route->callback(),
+			register_rest_route( $this->namespace, $route->endpoint(), [
+				'methods'             => $route->method(),
+				'callback'            => $route->callback(),
+				'permission_callback' => $permission,
 			] );
 		}
 	}

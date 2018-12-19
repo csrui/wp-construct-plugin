@@ -21,7 +21,7 @@ use \csrui\WPConstruct\Plugin\ContentType\PostType;
  * @since      0.0.1
  * @package    FCG
  * @subpackage Agenda/lib/PostType
- * @author     Gulbenkian <devdigital@csrui.pt>
+ * @author     Rui Sardinha <mail@ruisardinha.com>
  */
 class Event extends PostType {
 
@@ -106,7 +106,7 @@ use \csrui\WPConstruct\Plugin\ContentType\ACF\Group;
  * @since      0.0.1
  * @package    FCG
  * @subpackage Agenda/lib/Fields
- * @author     Gulbenkian <devdigital@csrui.pt>
+ * @author     Rui Sardinha <mail@ruisardinha.com>
  */
 class ClosingDays extends Group {
 

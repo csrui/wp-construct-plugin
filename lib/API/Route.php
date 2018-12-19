@@ -7,7 +7,7 @@ namespace csrui\WPConstruct\Plugin\API;
  *
  * @since      0.0.1
  * @package    Gulbenkian
- * @author     Gulbenkian <devdigital@csrui.pt>
+ * @author     Rui Sardinha <mail@ruisardinha.com>
  */
 class Route {
 

@@ -92,7 +92,7 @@ abstract class App implements Registerable {
 	 * @return [type] [description]
 	 */
 	final public function register() {
-		\add_action( 'plugins_loaded', function () {
+		add_action( 'plugins_loaded', function () {
 			$this->run();
 		});
 	}

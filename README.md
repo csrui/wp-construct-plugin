@@ -1,6 +1,7 @@
 # WP Contruct
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b236a84f62cb43fba9af17531ae1a4a0)](https://app.codacy.com/app/csrui/wp-construct-plugin?utm_source=github.com&utm_medium=referral&utm_content=csrui/wp-construct-plugin&utm_campaign=Badge_Grade_Settings)
+[![CircleCI](https://circleci.com/gh/csrui/wp-construct-plugin.svg?style=svg)](https://circleci.com/gh/csrui/wp-construct-plugin)
 
 ## Plugin Edition
 

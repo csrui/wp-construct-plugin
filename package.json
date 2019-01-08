@@ -2,8 +2,8 @@
   "name": "wp-construct-plugin",
   "version": "1.0.0",
   "scripts": {
-    "doc-serve": "gitbook serve",
-    "doc-build": "gitbook build"
+    "serve-docs": "gitbook serve",
+    "build-docs": "gitbook build"
   },
   "bin": {
     "gitbook": "./bin/gitbook"

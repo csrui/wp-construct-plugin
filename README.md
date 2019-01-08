@@ -10,7 +10,8 @@ extending.
 
 ### Documentation
 ```
-gitbook serve
+yarn install
+yarn serve-docs
 ```
 
 ### Run Tests

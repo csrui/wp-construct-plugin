@@ -1,0 +1,14 @@
+{
+  "name": "wp-construct-plugin",
+  "version": "1.0.0",
+  "scripts": {
+    "doc-serve": "gitbook serve",
+    "doc-build": "gitbook build"
+  },
+  "bin": {
+    "gitbook": "./bin/gitbook"
+  },
+  "devDependencies": {
+    "gitbook-cli": "2.3.2"
+  }
+}

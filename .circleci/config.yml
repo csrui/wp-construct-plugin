@@ -28,7 +28,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
         
-      - run: yarn build
+      - run: yarn docs-build
       - run: |
           # Deploy docs
           cd _book/

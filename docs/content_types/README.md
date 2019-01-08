@@ -161,7 +161,7 @@ class ClosingDays extends Group {
 ...
 ```
 
-Many fields configuration, copied from ACF export.
+Many fields configuration, copied from ACF export. 
 
 ```php
 ...					
@@ -208,4 +208,12 @@ Many fields configuration, copied from ACF export.
 	}
 }
 
+```
+
+**Here's a TIP:**
+
+If you'd like to just create these classes by hand you can use the handy [CLI](/cli) Generator to generate unique keys.
+
+```bash
+wp generator acf_identifier
 ```

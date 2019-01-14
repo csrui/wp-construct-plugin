@@ -30,10 +30,10 @@ on the API requests. We should do in *App.php* this after registering all Post T
 Taxonomies and Fields.
 
 ```php
-...
-
 // Lets register REST fields
-RestFieldsRegistry::register();
+RestFieldsRegistry::register( [
+    Fields\BasicEvent::class,
+] );
 ```
 
 Here's a full example.

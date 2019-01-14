@@ -10,7 +10,7 @@ use csrui\WPConstruct\Plugin\ContentType\RestFields;
  *
  *
  * @since      0.0.1
- * @package    WPPlugin
+ * @package    csrui\WPConstruct\Plugin\ContentType
  * @author     Rui Sardinha <mail@ruisardinha.com>
  */
 class RestFieldsRegistry {
@@ -48,13 +48,21 @@ class RestFieldsRegistry {
 
 			foreach ( $fields as $field ) {
 
-				// Check first if a custom getter was defined for a given field
+				// Check first if a custom getter was defined for a given field.
 				if ( is_callable( [ $obj, "get_rest_{$field}" ] ) ) {
 					$data[ $field ] = call_user_func( [ $obj, "get_rest_{$field}" ] );
 					continue;
 				}
 
-				$data[ $field ] = get_field( $field, $post['id'] );
+				// If ACF detected, use it to retrieve metadata.
+				// It would be nice if this was chosen and not auto-detected
+				if ( function_exists( 'get_field' ) ) {
+					$data[ $field ] = get_field( $field, $post['id'] );
+					continue;
+				}
+
+				// Fallback to WordPress default function.
+				$data[ $field ] = get_post_meta( $post['id'], $field );
 			}
 		}
 
@@ -119,6 +127,10 @@ class RestFieldsRegistry {
 	/**
 	 * Register each RestFields component.
 	 *
+	 * Example: RestFieldsRegistry::register( [
+	 *   Fields\Event::class,
+	 * ] );
+	 *
 	 * @since  0.0.0
 	 * @param  array $plugin_components
 	 * @return array
@@ -131,12 +143,13 @@ class RestFieldsRegistry {
 
 			foreach ( $objects_to_register as $post_type => $objects ) {
 
-				register_rest_field( $post_type, 'acf', [
-
-					'get_callback' => function( $post ) use ( $objects ) {
-						return static::get_rest_from_post( $post, $objects );
-					}
-				] );
+				register_rest_field( $post_type, 'custom_fields', 
+					[
+						'get_callback' => function( $post ) use ( $objects ) {
+							return static::get_rest_from_post( $post, $objects );
+						}
+					] 
+				);
 			}
 		} );
 	}

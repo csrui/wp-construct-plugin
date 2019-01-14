@@ -126,9 +126,9 @@ class RestFieldsRegistry {
 
 	/**
 	 * Register each RestFields component.
-	 * 
+	 *
 	 * Example: RestFieldsRegistry::register( [
-	 * 	Fields\Event::class,
+	 *   Fields\Event::class,
 	 * ] );
 	 *
 	 * @since  0.0.0
@@ -143,12 +143,13 @@ class RestFieldsRegistry {
 
 			foreach ( $objects_to_register as $post_type => $objects ) {
 
-				register_rest_field( $post_type, 'custom_fields', [
-
-					'get_callback' => function( $post ) use ( $objects ) {
-						return static::get_rest_from_post( $post, $objects );
-					}
-				] );
+				register_rest_field( $post_type, 'custom_fields', 
+					[
+						'get_callback' => function( $post ) use ( $objects ) {
+							return static::get_rest_from_post( $post, $objects );
+						}
+					] 
+				);
 			}
 		} );
 	}

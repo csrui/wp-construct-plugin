@@ -4,6 +4,7 @@ namespace csrui\WPConstruct\Plugin\ContentType;
 
 use csrui\WPConstruct\Plugin\ContentType\ContentTypeRegistry;
 use csrui\WPConstruct\Plugin\ContentType\RestFields;
+use csrui\WPConstruct\Plugin\ContentType\RestGroup;
 
 /**
  * Handles registering Rest custom fields. Still in BETA.
@@ -46,9 +47,10 @@ class RestFieldsRegistry {
 			// Get list of rest fields
 			$fields = $obj->get_rest_fields();
 
-			if ( is_callable( [ $obj, 'get_rest_group' ] ) ) {
+			if ( ( $obj instanceof RestGroup ) === true ) {
 
-				$data[ $obj->group_rest_title ] = call_user_func( [ $obj, 'get_rest_group' ], $fields );
+				$title          = call_user_func( [ $obj, 'get_rest_group_title' ] );
+				$data[ $title ] = call_user_func( [ $obj, 'get_rest_group' ], $fields );
 				continue;
 			}
 

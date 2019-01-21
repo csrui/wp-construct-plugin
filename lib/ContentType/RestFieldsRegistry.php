@@ -46,6 +46,12 @@ class RestFieldsRegistry {
 			// Get list of rest fields
 			$fields = $obj->get_rest_fields();
 
+			if ( is_callable( [ $obj, 'get_rest_group' ] ) ) {
+
+				$data[ $obj->group_rest_title ] = call_user_func( [ $obj, 'get_rest_group' ], $fields );
+				continue;
+			}
+
 			foreach ( $fields as $field ) {
 
 				// Check first if a custom getter was defined for a given field.
@@ -64,7 +70,7 @@ class RestFieldsRegistry {
 				// Fallback to WordPress default function.
 				$data[ $field ] = get_post_meta( $post['id'], $field );
 			}
-		}
+		} // End foreach().
 
 		return $data;
 	}

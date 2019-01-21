@@ -50,7 +50,7 @@ class RestFieldsRegistry {
 			if ( ( $obj instanceof RestGroup ) === true ) {
 
 				$title          = call_user_func( [ $obj, 'get_rest_group_title' ] );
-				$data[ $title ] = call_user_func( [ $obj, 'get_rest_group' ], $fields );
+				$data[ $title ] = call_user_func( [ $obj, 'get_rest_group' ], $fields, $post['id'] );
 				continue;
 			}
 

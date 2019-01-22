@@ -4,6 +4,7 @@ namespace csrui\WPConstruct\Plugin\ContentType;
 
 use csrui\WPConstruct\Plugin\ContentType\ContentTypeRegistry;
 use csrui\WPConstruct\Plugin\ContentType\RestFields;
+use csrui\WPConstruct\Plugin\ContentType\RestGroup;
 
 /**
  * Handles registering Rest custom fields. Still in BETA.
@@ -46,6 +47,13 @@ class RestFieldsRegistry {
 			// Get list of rest fields
 			$fields = $obj->get_rest_fields();
 
+			if ( ( $obj instanceof RestGroup ) === true ) {
+
+				$title          = call_user_func( [ $obj, 'get_rest_group_title' ] );
+				$data[ $title ] = call_user_func( [ $obj, 'get_rest_group' ], $fields, $post['id'] );
+				continue;
+			}
+
 			foreach ( $fields as $field ) {
 
 				// Check first if a custom getter was defined for a given field.
@@ -64,7 +72,7 @@ class RestFieldsRegistry {
 				// Fallback to WordPress default function.
 				$data[ $field ] = get_post_meta( $post['id'], $field );
 			}
-		}
+		} // End foreach().
 
 		return $data;
 	}

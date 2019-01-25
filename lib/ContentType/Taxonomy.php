@@ -26,14 +26,23 @@ abstract class Taxonomy implements Registerable {
 	protected $post_types = [];
 
 	/**
+	 * Taxonomy slug.
+	 *
+	 * @var string
+	 */
+	protected $slug = null;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since 0.0.1
-	 * @param array $post_types A list of post types associated with the taxonomy.
+	 * @param string $slug       Taxonomy slug.
+	 * @param array  $post_types A list of post types associated with the taxonomy.
 	 */
-	public function __construct( array $post_types = [] ) {
+	public function __construct( array $post_types = [], string $slug = '' ) {
 
 		$this->post_types = $post_types;
+		$this->slug       = $slug;
 	}
 
 	/**
@@ -45,6 +54,10 @@ abstract class Taxonomy implements Registerable {
 	 * @return string string
 	 */
 	public function get_slug() : string {
+
+		if ( ! empty( $this->slug ) ) {
+			return $this->slug;
+		}
 
 		return $this->get_auto_slug();
 	}

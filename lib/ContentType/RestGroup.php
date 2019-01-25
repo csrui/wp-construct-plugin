@@ -9,7 +9,7 @@ namespace csrui\WPConstruct\Plugin\ContentType;
  * @package    WPPlugin
  * @author     Luiz Calderaro <lzcalderaro@gmail.com>
  */
-interface RestGroup {
+interface RestGroup extends RestField {
 
 	/**
 	 * Return a group fields.

@@ -15,11 +15,10 @@ interface RestGroup extends RestFields {
 	 * Return a group fields.
 	 *
 	 * @since  0.0.2
-	 * @var    array with fields name.
 	 * @var    int with post ID.
 	 * @return array Array of strings
 	 */
-	public function get_rest_group( array $fields, int $post_id ) : array;
+	public function get_rest_group( int $post_id ) : array;
 
 	/**
 	 * Return a group fields title.

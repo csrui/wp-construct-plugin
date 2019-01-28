@@ -36,6 +36,14 @@ class Route {
 	private $callback;
 
 	/**
+	 * Callback to get arguments.
+	 * 
+	 * @since 0.0.0
+	 * @var   array
+	 */
+	private $args = [];
+
+	/**
 	 * Route configuration.
 	 *
 	 * @since 0.0.1
@@ -43,11 +51,12 @@ class Route {
 	 * @param string $method   HTTP Method.
 	 * @param array  $callback Callback that responsed to endpoint.
 	 */
-	public function __construct( string $endpoint, string $method, array $callback ) {
+	public function __construct( string $endpoint, string $method, array $callback, array $args = [] ) {
 
 		$this->endpoint = $endpoint;
 		$this->method   = $method;
 		$this->callback = $callback;
+		$this->args     = $args;
 	}
 
 	/**
@@ -78,5 +87,15 @@ class Route {
 	 */
 	public function callback() : array {
 		return $this->callback;
+	}
+
+	/**
+	 * Returns the arguments.
+	 *
+	 * @since  0.0.0
+	 * @return array
+	 */
+	public function args() : array {
+		return $this->args;
 	}
 }

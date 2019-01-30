@@ -4,7 +4,6 @@ namespace csrui\WPConstruct\Plugin\ContentType;
 
 use csrui\WPConstruct\Plugin\ContentType\ContentTypeRegistry;
 use csrui\WPConstruct\Plugin\ContentType\RestFields;
-use csrui\WPConstruct\Plugin\ContentType\RestGroup;
 
 /**
  * Handles registering Rest custom fields. Still in BETA.

@@ -44,13 +44,6 @@ class RestFieldsRegistry {
 				continue;
 			}
 
-			if ( ( $obj instanceof RestGroup ) === true ) {
-
-				$title          = call_user_func( [ $obj, 'get_rest_group_title' ] );
-				$data[ $title ] = call_user_func( [ $obj, 'get_rest_group' ], $post['id'] );
-				continue;
-			}
-
 			// Get list of rest fields
 			$fields = $obj->get_rest_fields();
 
@@ -58,7 +51,7 @@ class RestFieldsRegistry {
 
 				// Check first if a custom getter was defined for a given field.
 				if ( is_callable( [ $obj, "get_rest_{$field}" ] ) ) {
-					$data[ $field ] = call_user_func( [ $obj, "get_rest_{$field}" ] );
+					$data[ $field ] = call_user_func( [ $obj, "get_rest_{$field}" ], $post['id'] );
 					continue;
 				}
 
@@ -70,7 +63,7 @@ class RestFieldsRegistry {
 				}
 
 				// Fallback to WordPress default function.
-				$data[ $field ] = get_post_meta( $post['id'], $field );
+				$data[ $field ] = get_post_meta( $post['id'], $field, true );
 			}
 		} // End foreach().
 

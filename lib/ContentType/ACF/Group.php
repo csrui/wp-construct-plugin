@@ -69,13 +69,13 @@ abstract class Group implements Registerable {
 		$location = [];
 		$params   = $this->get_locations();
 
-		foreach ( $params as $param => $value ) {
+		foreach ( $params as $param ) {
 			$location[] = array(
 				array(
-					'param'    => $param,
+					'param'    => $param['type'],
 					'operator' => '==',
-					'value'    => $value,
-				)
+					'value'    => $param['value'],
+				),
 			);
 		}
 		return $location;

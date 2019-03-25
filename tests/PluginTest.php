@@ -1,8 +1,9 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
 use csrui\WPConstruct\Plugin\App;
 
-class PluginTest extends PHPUnit_Framework_TestCase {
+class PluginTest extends TestCase {
 
 	public function testIdentification() {
 

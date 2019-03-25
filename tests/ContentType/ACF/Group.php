@@ -43,10 +43,12 @@ class GroupTest extends TestCase {
 
 		$expected_result = [
 			[
-				'param'    => 'post_type',
-				'operator' => '==',
-				'value'    => 'event',
-			],
+				[
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'event',
+				],
+			]
 		];
 
 		$this->assertEquals( $expected_result, $method->invoke( new SimpleLocationsContent ) );
@@ -59,14 +61,16 @@ class GroupTest extends TestCase {
 
 		$expected_result = [
 			[
-				'param'    => 'post_type',
-				'operator' => '==',
-				'value'    => 'event',
-			],
-			[
-				'param'    => 'post_type',
-				'operator' => '==',
-				'value'    => 'post',
+				[
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'event',
+				],
+				[
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'post',
+				],
 			],
 		];
 

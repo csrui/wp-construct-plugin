@@ -69,15 +69,31 @@ abstract class Group implements Registerable {
 		$location = [];
 		$params   = $this->get_locations();
 
-		foreach ( $params as $param ) {
-			$location[] = array(
-				array(
-					'param'    => $param['type'],
+		foreach ( $params as $key => $value ) {
+
+			// Simple key value form
+			if ( is_string( $key ) && is_string( $value ) ) {
+				$location[] = [
+					'param'    => $key,
 					'operator' => '==',
-					'value'    => $param['value'],
-				),
-			);
+					'value'    => $value,
+				];
+
+				continue;
+			}
+
+			// Extended form. Allows more control and structured array.
+			if ( empty( $value['type'] ) || empty( $value['value'] ) ) {
+				continue;
+			}
+
+			$location[] = [
+				'param'    => $value['type'],
+				'operator' => $value['operator'] ?? '==',
+				'value'    => $value['value'],
+			];
 		}
+
 		return $location;
 	}
 

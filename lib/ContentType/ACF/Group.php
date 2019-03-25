@@ -94,7 +94,7 @@ abstract class Group implements Registerable {
 			];
 		}
 
-		return $location;
+		return [ $location ];
 	}
 
 	/**

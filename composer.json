@@ -35,5 +35,8 @@
     },
     "config": {
       "sort-packages": true
+    },
+    "scripts" : {
+      "test" : "phpunit --testdox"
     }
 }

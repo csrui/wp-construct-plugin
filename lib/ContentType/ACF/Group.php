@@ -62,39 +62,48 @@ abstract class Group implements Registerable {
 	/**
 	 * Sets the group location
 	 *
+	 * @see https://www.advancedcustomfields.com/resources/register-fields-via-php/
+	 * 
 	 * @since  0.0.2
 	 * @return array ACF compatible sintax for location
 	 */
 	private function get_location() : array {
 		$location = [];
-		$params   = $this->get_locations();
+		$groups   = $this->get_locations();
 
-		foreach ( $params as $key => $value ) {
+		foreach ( $groups as $params ) {
 
-			// Simple key value form
-			if ( is_string( $key ) && is_string( $value ) ) {
-				$location[] = [
-					'param'    => $key,
-					'operator' => '==',
-					'value'    => $value,
+			$new_location = [];
+
+			foreach ( $params as $key => $value ) {
+
+				// Simple key value form
+				if ( is_string( $key ) && is_string( $value ) ) {
+					$new_location[] = [
+						'param'    => $key,
+						'operator' => '==',
+						'value'    => $value,
+					];
+
+					continue;
+				}
+
+				// Extended form. Allows more control and structured array.
+				if ( empty( $value['type'] ) || empty( $value['value'] ) ) {
+					continue;
+				}
+
+				$new_location[] = [
+					'param'    => $value['type'],
+					'operator' => $value['operator'] ?? '==',
+					'value'    => $value['value'],
 				];
-
-				continue;
 			}
 
-			// Extended form. Allows more control and structured array.
-			if ( empty( $value['type'] ) || empty( $value['value'] ) ) {
-				continue;
-			}
-
-			$location[] = [
-				'param'    => $value['type'],
-				'operator' => $value['operator'] ?? '==',
-				'value'    => $value['value'],
-			];
+			$location[] = $new_location;
 		}
 
-		return [ $location ];
+		return $location;
 	}
 
 	/**

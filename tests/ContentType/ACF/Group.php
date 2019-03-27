@@ -7,7 +7,9 @@ class SimpleLocationsContent extends Group {
 
 	public function get_locations() : array {
 		return [
-			'post_type' => 'event',
+			[
+				'post_type' => 'event',
+			]
 		];
 	}
 
@@ -19,14 +21,16 @@ class ComplexLocationsContent extends Group {
 	public function get_locations() : array {
 		return [
 			[
-				'type'     => 'post_type',
-				'operator' => '==',
-				'value'    => 'event',
-			],
-			[
-				'type'     => 'post_type',
-				'operator' => '==',
-				'value'    => 'post',
+				[
+					'type'     => 'post_type',
+					'operator' => '==',
+					'value'    => 'event',
+				],
+				[
+					'type'     => 'post_type',
+					'operator' => '==',
+					'value'    => 'post',
+				],
 			],
 		];
 	}

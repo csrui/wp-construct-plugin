@@ -81,9 +81,11 @@ abstract class Group implements Registerable {
 			$using_shorthand = true;
 
 			$location[] = [
-				'param'    => key( $value ),
-				'operator' => '==',
-				'value'    => current( $value ),
+				[
+					'param'    => key( $value ),
+					'operator' => '==',
+					'value'    => current( $value ),
+				]
 			];
 		}
 

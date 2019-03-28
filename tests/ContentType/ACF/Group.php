@@ -46,14 +46,18 @@ class GroupTest extends TestCase {
 
 		$expected_result = [
 			[
-				'param'    => 'post_type',
-				'operator' => '==',
-				'value'    => 'event',
+				[
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'event',
+				],
 			],
 			[
-				'param'    => 'post_type',
-				'operator' => '==',
-				'value'    => 'post',
+				[
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'post',
+				],
 			],
 		];
 

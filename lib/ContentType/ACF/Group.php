@@ -68,39 +68,27 @@ abstract class Group implements Registerable {
 	 * @return array ACF compatible sintax for location
 	 */
 	private function get_location() : array {
-		$location = [];
-		$groups   = $this->get_locations();
+		$location        = [];
+		$using_shorthand = false;
+		$params          = $this->get_locations();
 
-		foreach ( $groups as $params ) {
+		foreach ( $params as $key => $value ) {
 
-			$new_location = [];
-
-			foreach ( $params as $key => $value ) {
-
-				// Simple key value form
-				if ( is_string( $key ) && is_string( $value ) ) {
-					$new_location[] = [
-						'param'    => $key,
-						'operator' => '==',
-						'value'    => $value,
-					];
-
-					continue;
-				}
-
-				// Extended form. Allows more control and structured array.
-				if ( empty( $value['type'] ) || empty( $value['value'] ) ) {
-					continue;
-				}
-
-				$new_location[] = [
-					'param'    => $value['type'],
-					'operator' => $value['operator'] ?? '==',
-					'value'    => $value['value'],
-				];
+			if ( count( $value ) !== 1 ) {
+				continue;
 			}
 
-			$location[] = $new_location;
+			$using_shorthand = true;
+
+			$location[] = [
+				'param'    => key( $value ),
+				'operator' => '==',
+				'value'    => current( $value ),
+			];
+		}
+
+		if ( $using_shorthand === false ) {
+			$location = $params;
 		}
 
 		return $location;

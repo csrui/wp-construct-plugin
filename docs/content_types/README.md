@@ -25,13 +25,13 @@ use \csrui\WPConstruct\Plugin\ContentType\PostType;
  */
 class Event extends PostType {
 
-    protected function get_args() : array {
+	protected function get_args() : array {
 
-        $labels = [
-            'name'                => _x( 'Events', 'Post Type General Name', 'fcg-agenda' ),
-            'singular_name'       => _x( 'Event', 'Post Type Singular Name', 'fcg-agenda' ),
-            'menu_name'           => __( 'Events', 'fcg-agenda' ),
-            'name_admin_bar'      => __( 'Events', 'fcg-agenda' ),
+		$labels = [
+			'name'                => _x( 'Events', 'Post Type General Name', 'fcg-agenda' ),
+			'singular_name'       => _x( 'Event', 'Post Type Singular Name', 'fcg-agenda' ),
+			'menu_name'           => __( 'Events', 'fcg-agenda' ),
+			'name_admin_bar'      => __( 'Events', 'fcg-agenda' ),
 ...
 ```
 
@@ -40,31 +40,31 @@ The file is big, let's just cut through the cookie dough.
 ```php
 ...
 
-        $args = [
-            'label'               => __( 'Event', 'fcg-agenda' ),
-            'description'         => __( 'Events', 'fcg-agenda' ),
-            'labels'              => $labels,
-            'supports'            => $supports,
-            'taxonomies'          => $this->get_taxonomies(),
-            'hierarchical'        => false,
-            'public'              => true,
-            'show_ui'             => true,
-            'show_in_menu'        => true,
-            'menu_position'       => 20,
-            'menu_icon'           => 'dashicons-businessman',
-            'show_in_admin_bar'   => true,
-            'show_in_nav_menus'   => true,
-            'can_export'          => true,
-            'exclude_from_search' => false,
-            'publicly_queryable'  => true,
-            'capabilities'        => $capabilities,
-            'show_in_rest'        => true,
-            'has_archive'         => 'events',
-            'rewrite'             => [ 'slug' => $this->get_slug() ],
-        ];
+		$args = [
+			'label'               => __( 'Event', 'fcg-agenda' ),
+			'description'         => __( 'Events', 'fcg-agenda' ),
+			'labels'              => $labels,
+			'supports'            => $supports,
+			'taxonomies'          => $this->get_taxonomies(),
+			'hierarchical'        => false,
+			'public'              => true,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'menu_position'       => 20,
+			'menu_icon'           => 'dashicons-businessman',
+			'show_in_admin_bar'   => true,
+			'show_in_nav_menus'   => true,
+			'can_export'          => true,
+			'exclude_from_search' => false,
+			'publicly_queryable'  => true,
+			'capabilities'        => $capabilities,
+			'show_in_rest'        => true,
+			'has_archive'         => 'events',
+			'rewrite'             => [ 'slug' => $this->get_slug() ],
+		];
 
-        return $args;
-    }
+		return $args;
+	}
 }
 ```
 
@@ -75,7 +75,7 @@ called after registering the custom post type.
 ```php
 protected function register_hooks() {
 
-    do_action( 'activate_unikorn' );
+	do_action( 'activate_unikorn' );
 }
 ```
 
@@ -85,7 +85,7 @@ to customise it to avoid a collision with another plugin.
 ```php
 public function get_slug() : string {
 
-    return 'custom_slug';
+	return 'custom_slug';
 }
 ```
 
@@ -127,7 +127,9 @@ class ClosingDays extends Group {
 	public function get_locations() : array {
 
 		return [
-			'options_page' => 'acf-options-closing-days',
+			[
+				'options_page' => 'acf-options-closing-days',
+			]
 		];
 	}
 

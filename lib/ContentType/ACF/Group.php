@@ -62,22 +62,37 @@ abstract class Group implements Registerable {
 	/**
 	 * Sets the group location
 	 *
+	 * @see https://www.advancedcustomfields.com/resources/register-fields-via-php/
+	 * 
 	 * @since  0.0.2
 	 * @return array ACF compatible sintax for location
 	 */
 	private function get_location() : array {
-		$location = [];
-		$params   = $this->get_locations();
+		$location        = [];
+		$using_shorthand = false;
+		$params          = $this->get_locations();
 
-		foreach ( $params as $param ) {
-			$location[] = array(
-				array(
-					'param'    => $param['type'],
+		foreach ( $params as $key => $value ) {
+
+			if ( count( $value ) !== 1 ) {
+				continue;
+			}
+
+			$using_shorthand = true;
+
+			$location[] = [
+				[
+					'param'    => key( $value ),
 					'operator' => '==',
-					'value'    => $param['value'],
-				),
-			);
+					'value'    => current( $value ),
+				]
+			];
 		}
+
+		if ( $using_shorthand === false ) {
+			$location = $params;
+		}
+
 		return $location;
 	}
 

@@ -89,12 +89,12 @@ class RestFieldsRegistry {
 			$locations = $obj->get_locations();
 
 			foreach ( $locations as $location ) {
-                if ( ! isset($location['post_type'] ) ) {
-                    continue;
-                }
+				if ( ! isset( $location['post_type'] ) ) {
+					continue;
+				}
 
-                $data[ $location['post_type'] ][] = $obj;
-            }
+				$data[ $location['post_type'] ][] = $obj;
+			}
 		}
 
 		return $data;

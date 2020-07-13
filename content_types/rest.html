@@ -1,0 +1,528 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Exposing REST Fields · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../acf/" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../setup/">
+            
+                <a href="../setup/#required-files">
+            
+                    
+                    Required Files
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../setup/">
+            
+                <a href="../setup/#libpluginphp">
+            
+                    
+                    lib/Plugin.php
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../setup/">
+            
+                <a href="../setup/#libpluginfactoryphp">
+            
+                    
+                    lib/PluginFactory.php
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../setup/">
+            
+                <a href="../setup/#plugin-namephp">
+            
+                    
+                    plugin-name.php
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../setup/">
+            
+                <a href="../setup/#libappphp">
+            
+                    
+                    lib/App.php
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../activation/">
+            
+                <a href="../activation/">
+            
+                    
+                    Activation actions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../migrations/">
+            
+                <a href="../migrations/">
+            
+                    
+                    Migrations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Content Types
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="./">
+            
+                <a href="./#creating-post-types">
+            
+                    
+                    Creating Post Types
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="./">
+            
+                <a href="./#creating-taxonomies">
+            
+                    
+                    Creating Taxonomies
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="./">
+            
+                <a href="./#creating-meta-fields">
+            
+                    
+                    Creating Meta Fields
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="rest.html">
+            
+                <a href="rest.html#exposing-rest-fields">
+            
+                    
+                    Exposing REST Fields
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../acf/">
+            
+                <a href="../acf/">
+            
+                    
+                    ACF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../fixtures/">
+            
+                <a href="../fixtures/">
+            
+                    
+                    Fixtures
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../rest/">
+            
+                <a href="../rest/">
+            
+                    
+                    REST API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../cli/">
+            
+                <a href="../cli/">
+            
+                    
+                    CLI
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../others/">
+            
+                <a href="../others/">
+            
+                    
+                    External Usage
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Exposing REST Fields</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="content-types">Content Types</h1>
+<h2 id="exposing-rest-fields">Exposing REST Fields</h2>
+<p>Getting some fields to show up on REST API is simple. Implement <em>RestFields</em>
+on your Group like so.</p>
+<pre><code class="lang-php"><span class="hljs-keyword">use</span> \<span class="hljs-title">csrui</span>\<span class="hljs-title">WPConstruct</span>\<span class="hljs-title">Plugin</span>\<span class="hljs-title">ContentType</span>\<span class="hljs-title">RestFields</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicEvent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Group</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RestFields</span> </span>{
+</code></pre>
+<p>Now if you run you code you will get a missing method error.
+Thats ok, it&apos;s supposed to.
+Let&apos;s fix that but adding a method to or Group. The example below will add the
+fields &quot;lead&quot; and &quot;event_state&quot; onto the API request.</p>
+<pre><code class="lang-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get_rest_fields</span><span class="hljs-params">()</span> : <span class="hljs-title">array</span> </span>{
+    <span class="hljs-keyword">return</span> [
+        <span class="hljs-string">&apos;lead&apos;</span>,
+        <span class="hljs-string">&apos;event_state&apos;</span>,
+    ];
+}
+</code></pre>
+<p>To finish off let&apos;s tell our example plugin to register all these fields
+on the API requests. We should do in <em>App.php</em> this after registering all Post Types,
+Taxonomies and Fields.</p>
+<pre><code class="lang-php"><span class="hljs-comment">// Lets register REST fields</span>
+RestFieldsRegistry::register( [
+    Fields\BasicEvent::class,
+] );
+</code></pre>
+<p>Here&apos;s a full example.</p>
+<pre><code class="lang-php"><span class="hljs-keyword">namespace</span> <span class="hljs-title">FCG</span>\<span class="hljs-title">WP</span>\<span class="hljs-title">Plugin</span>\<span class="hljs-title">Agenda</span>\<span class="hljs-title">Fields</span>;
+
+<span class="hljs-keyword">use</span> \<span class="hljs-title">csrui</span>\<span class="hljs-title">WPConstruct</span>\<span class="hljs-title">Plugin</span>\<span class="hljs-title">ContentType</span>\<span class="hljs-title">ACF</span>\<span class="hljs-title">Group</span>;
+<span class="hljs-keyword">use</span> \<span class="hljs-title">csrui</span>\<span class="hljs-title">WPConstruct</span>\<span class="hljs-title">Plugin</span>\<span class="hljs-title">ContentType</span>\<span class="hljs-title">RestFields</span>;
+
+<span class="hljs-comment">/**
+ * Defines the `Lead` field.
+ *
+ * <span class="hljs-doctag">@since</span>      0.0.1
+ * <span class="hljs-doctag">@package</span>    FCG
+ * <span class="hljs-doctag">@subpackage</span> Agenda/lib/Fields
+ * <span class="hljs-doctag">@author</span>     Rui Sardinha &lt;mail<span class="hljs-doctag">@ruisardinha</span>.com&gt;
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BasicEvent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Group</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RestFields</span> </span>{
+
+    <span class="hljs-comment">/**
+     * ACF group key.
+     *
+     * <span class="hljs-doctag">@since</span> 0.0.1
+     * <span class="hljs-doctag">@var</span>   string
+     */</span>
+    <span class="hljs-keyword">protected</span> $key = <span class="hljs-string">&apos;group_5a732e29337e8&apos;</span>;
+
+    <span class="hljs-comment">/**
+     * List of fields available through REST API.
+     *
+     * <span class="hljs-doctag">@since</span>  0.0.2
+     * <span class="hljs-doctag">@return</span> array List of strings
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get_rest_fields</span><span class="hljs-params">()</span> : <span class="hljs-title">array</span> </span>{
+        <span class="hljs-keyword">return</span> [
+            <span class="hljs-string">&apos;lead&apos;</span>,
+            <span class="hljs-string">&apos;event_state&apos;</span>,
+        ];
+    }
+
+...
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./#creating-meta-fields" class="navigation navigation-prev " aria-label="Previous page: Creating Meta Fields">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../acf/" class="navigation navigation-next " aria-label="Next page: ACF">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Exposing REST Fields","level":"1.5.4","depth":2,"next":{"title":"ACF","level":"1.6","depth":1,"path":"acf/README.md","ref":"acf/README.md","articles":[]},"previous":{"title":"Creating Meta Fields","level":"1.5.3","depth":2,"anchor":"#creating-meta-fields","path":"content_types/README.md","ref":"content_types/README.md#creating-meta-fields","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"./docs","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"content_types/rest.md","mtime":"2020-07-13T13:15:18.540Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-13T13:15:58.732Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -62,8 +62,9 @@ class Routes {
 	 * @param string $method   HTTP method.
 	 * @param object $class    Object that will handle the callback.
 	 * @param string $callback Custom method to answer to the endpoint.
+	 * @param array  $args     register_route arguments
 	 */
-	public function add( string $endpoint, string $method, $class, $callback = null ) {
+	public function add( string $endpoint, string $method, $class, $callback = null, array $args = [] ) {
 
 		$method = strtolower( $method );
 
@@ -91,7 +92,7 @@ class Routes {
 			return;
 		}
 
-		$this->routes[] = new Route( $endpoint, $method, [ $class, $callback ] );
+		$this->routes[] = new Route( $endpoint, $method, [ $class, $callback ], $args );
 	}
 
 	/**
@@ -114,10 +115,13 @@ class Routes {
 
 		foreach ( $this->routes as $route ) {
 
+			$args = null;
+
 			register_rest_route( $this->namespace, $route->endpoint(), [
 				'methods'             => $route->method(),
 				'callback'            => $route->callback(),
 				'permission_callback' => $permission,
+				'args'                => $route->args(),
 			] );
 		}
 	}

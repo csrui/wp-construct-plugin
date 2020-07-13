@@ -4,6 +4,7 @@ namespace csrui\WPConstruct\Plugin\API;
 
 use csrui\WPConstruct\Plugin;
 use csrui\WPConstruct\Plugin\API\PermissionInterface;
+use \WP_REST_Request;
 
 /**
  * Register all api routes.
@@ -31,10 +32,10 @@ class Routes {
 	protected $namespace;
 
 	/**
-	 * Holds the permission object
+	 * Holds the permission object or list of objects.
 	 *
 	 * @since 0.0.1
-	 * @var   object
+	 * @var   object|array
 	 */
 	protected $permission;
 
@@ -49,7 +50,7 @@ class Routes {
 
 		$this->namespace = $namespace;
 
-		if ( $permission instanceof PermissionInterface ) {
+		if ( $permission instanceof PermissionInterface || is_array( $permission ) ) {
 			$this->permission = $permission;
 		}
 	}
@@ -106,20 +107,48 @@ class Routes {
 			return;
 		}
 
-		$permission = null;
-
-		if ( $this->permission instanceof PermissionInterface ) {
-			$permission = [ $this->permission, 'register' ];
-		}
-
 		foreach ( $this->routes as $route ) {
 
 			register_rest_route( $this->namespace, $route->endpoint(), [
 				'methods'             => $route->method(),
 				'callback'            => $route->callback(),
-				'permission_callback' => $permission,
+				'permission_callback' => [ $this, 'permission_callback' ],
 			] );
 		}
+	}
+
+	/**
+	 * Callback for the REST permissions.
+	 * 
+	 * Tests either a single or a stack of permissions.
+	 * 
+	 * @since 0.0.0
+	 *
+	 * @param WP_REST_Request $wp_request
+	 * @return boolean
+	 */
+	public function permission_callback( WP_REST_Request $wp_request ) : bool {
+
+		// For legacy support, with only one permission object.
+		if ( $this->permission instanceof PermissionInterface ) {
+			return $this->permission->register( $wp_request );
+		}
+
+		// Process a queue of permissions. As soon as one fails, block the request.
+		if ( is_array( $this->permission ) ) {
+			foreach ( $this->permission as $permission ) {
+
+				if ( ! $permission instanceof PermissionInterface ) {
+					continue;
+				}
+
+				if ( $permission->register( $wp_request ) === false ) {
+					return false;
+				}
+			}
+		}
+
+		return true;
 	}
 
 }
